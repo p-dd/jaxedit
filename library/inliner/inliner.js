@@ -35,7 +35,7 @@ if (!window.console) console = {log : function() {}};
     }
     this.length = elems.length;
   };
-
+  
   init.prototype = inliner.prototype;
 
   inliner.prototype.each = function(callback) {
@@ -189,21 +189,6 @@ if (!window.console) console = {log : function() {}};
         }
         return -1;
       }
-    },
-
-    ajax: function(settings) {
-      var xhr = (window.XMLHttpRequest) ?
-                new XMLHttpRequest() : new ActiveXObject("Microsoft.XMLHTTP");
-      xhr.onreadystatechange = function() {
-        if (xhr.readyState == 4) {
-          settings.success(xhr.responseText, xhr.status, xhr);
-        }
-      };
-      xhr.open(settings.type, settings.url, true);
-      if (settings.contentType) {
-        xhr.setRequestHeader("Content-Type", settings.contentType);
-      }
-      xhr.send(settings.data);
     }
   });
 

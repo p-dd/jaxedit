@@ -183,6 +183,7 @@ window.typejax = (function($){
 
       function insertDiv(idx, i) {
         node = document.createElement("div"); data = newdiv[i];
+        if (data.name == "section") data.name = 'typejax ' + data.name;
         node.className = "envblock " + data.name;
         if (data.reset) node.style.cssText = "counter-reset:" + data.reset + ";";
         node.innerHTML = data.html;
@@ -193,6 +194,7 @@ window.typejax = (function($){
         var output = "", data = "", style;
         for (var i = 0; i < newdiv.length; i++) {
           data = newdiv[i];
+          if (data.name == "section") data.name = 'typejax ' + data.name;
           style = data.reset ? " style='counter-reset:" + data.reset + ";'" : "";
           output += "<div class='envblock " + data.name + "'" + style + ">" + data.html + "</div>";
         }
@@ -454,7 +456,7 @@ window.typejax = (function($){
         parseSome();
       }
       if (window.jaxedit) {
-        jaxedit.childs.rbot.innerHTML = "size: " + typejax.totalsize + "; change: " + delstart + " to " + delend;
+        jaxedit.childs.rbot.innerHTML = "size: " + typejax.totalsize;// change: " + delstart + " to " + delend;
       }
     },
 
@@ -2125,7 +2127,6 @@ window.typejax = (function($){
 
           if (window.jaxedit) {
             var display = (docname == "beamer") ? "inline-block" : "none";
-            jaxedit.childs.presbtn.style.display = display;
           }
         },
 
@@ -2532,6 +2533,7 @@ window.typejax = (function($){
           open += "<script type='math/tex'>", close = "</script>" + close; 
         }
       } else {
+        if (tree.name == "section") tree.name = 'typejax ' + tree.name;
         open = "<div class='envblock " + tree.name + "'>", close = "</div>";
         switch (tree.name) {
           case "bmath":
