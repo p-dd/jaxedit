@@ -110,7 +110,7 @@ window.jaxedit = (function($){
           }
         }
   
-        mathpath = options.localjs ? "/LaTeX-editor/library/mathjax/unpacked/" : "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/";
+        mathpath = options.localjs ? "/jaxedit/library/mathjax/unpacked/" : "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/";
         if (location.pathname.slice(0, 6) == "/note/") {
           gatepath = "/gate/"; shareurl = "/note/";
         } else {
@@ -169,11 +169,11 @@ window.jaxedit = (function($){
       loadEditor: function() {
         var that = this;
         if (this.options.highlight) {
-          $.loadStyles("/LaTeX-editor/library/codemirror/lib/codemirror.css");
-          $.loadScript("/LaTeX-editor/editor/textarea/colorful.js", function(){
-            $.loadScript("/LaTeX-editor/library/codemirror/lib/codemirror.js", function(){
-              $.loadScript("/LaTeX-editor/library/codemirror/mode/stex/stex.js", function(){
-                $.loadScript("/LaTeX-editor/library/codemirror/addon/edit/matchbrackets.js", function(){
+          $.loadStyles("/jaxedit/library/codemirror/lib/codemirror.css");
+          $.loadScript("/jaxedit/editor/textarea/colorful.js", function(){
+            $.loadScript("/jaxedit/library/codemirror/lib/codemirror.js", function(){
+              $.loadScript("/jaxedit/library/codemirror/mode/stex/stex.js", function(){
+                $.loadScript("/jaxedit/library/codemirror/addon/edit/matchbrackets.js", function(){
                   that.addEditor();
                   that.hasEditor = true;
                   that.initialize();
@@ -182,7 +182,7 @@ window.jaxedit = (function($){
             });
           });
         } else {
-          $.loadScript("/LaTeX-editor/editor/textarea/simple.js", function(){
+          $.loadScript("/jaxedit/editor/textarea/simple.js", function(){
             that.addEditor();
             that.hasEditor = true;
             that.initialize();
@@ -202,8 +202,8 @@ window.jaxedit = (function($){
           "});"
         document.body.appendChild(script);
         
-        $.loadStyles("/LaTeX-editor/typejax/typejax.css");
-        $.loadScript("/LaTeX-editor/typejax/typejax.js", function(){
+        $.loadStyles("/jaxedit/typejax/typejax.css");
+        $.loadScript("/jaxedit/typejax/typejax.js", function(){
           $.loadScript(mathpath + mathname, function(){
             MathJax.Hub.processUpdateTime = 200;
             MathJax.Hub.processUpdateDelay = 15;
